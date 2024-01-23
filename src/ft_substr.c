@@ -1,0 +1,33 @@
+#include <push_swap.h>
+
+char *ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char *str;
+	size_t i;
+	size_t n;
+
+	if (!s)
+		return (0);
+	n = strlen(s);
+
+	if((size_t)start >= n)
+		return (strdup(""));
+
+	if(len > n - (size_t)start)
+		len = n - (size_t)start;
+
+	str = (char *)malloc(sizeof(*s) * (len + 1));
+
+	if(!str)
+		return (0);
+
+	i = 0;
+	while(s[i] && i < len)
+	{
+		str[i] = s[(size_t)start + i];
+		i++;
+	}
+	
+	str[i] = '\0';
+	return (str);
+}
