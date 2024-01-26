@@ -1,6 +1,6 @@
 # Executables
 *.exe
 *.out
-*.0
+*.o
 
 push_swap
