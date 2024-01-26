@@ -24,7 +24,7 @@
 	rrr : rra and rrb at the same time.
 */
 
-void sa(stack **a)
+int sa(stack **a)
 {
 	if (*a && (*a)->next)
 	{
@@ -32,11 +32,12 @@ void sa(stack **a)
 		tmp = (*a)->data;
 		(*a)->data = (*a)->next->data;
 		(*a)->next->data = tmp;
-		printf("sa\n");
+		return 1;
 	}
+	return 0;
 }
 
-void sb(stack **b)
+int sb(stack **b)
 {
 	if (*b && (*b)->next)
 	{
@@ -44,18 +45,19 @@ void sb(stack **b)
 		tmp = (*b)->data;
 		(*b)->data = (*b)->next->data;
 		(*b)->next->data = tmp;
-		printf("sb\n");
+		return 1;
 	}
+	return 0;
 }
 
-void ss(stack **a, stack **b)
+int ss(stack **a, stack **b)
 {
-	sa(a);
-	sb(b);
-	printf("ss\n");
+	if (sa(a) && sb(b))
+		return 1;
+	return 0;	
 }
 
-void pa(stack **a, stack **b)
+int pa(stack **a, stack **b)
 {
 	if (*b)
 	{
@@ -63,11 +65,12 @@ void pa(stack **a, stack **b)
 		data = (*b)->data;
 		pop(b);
 		push(a, data);
-		printf("pa");
+		return 1;
 	}
+	return 0;
 }
 
-void pb(stack **a, stack **b)
+int pb(stack **a, stack **b)
 {
 	if (*a)
 	{
@@ -75,11 +78,12 @@ void pb(stack **a, stack **b)
 		data = (*a)->data;
 		pop(a);
 		push(b, data);
-		printf("pb");
+		return 1;
 	}
+	return 0;
 }
 
-void ra(stack **a)
+int ra(stack **a)
 {
 	int		data_tmp;
 	stack	*tmp;
@@ -87,7 +91,7 @@ void ra(stack **a)
 	if(*a)
 		tmp = *a;
 	else
-		return;
+		return 0;
 
 	while (tmp && tmp->next)
 	{
@@ -96,10 +100,10 @@ void ra(stack **a)
 		tmp->next->data = data_tmp;
 		tmp = tmp->next;
 	}
-	printf("ra\n");
+	return 1;
 }
 
-void rb(stack **b)
+int rb(stack **b)
 {
 	int		data_tmp;
 	stack	*tmp;
@@ -107,7 +111,7 @@ void rb(stack **b)
 	if(*b)
 		tmp = *b;
 	else
-		return;
+		return 0;
 
 	while (tmp && tmp->next)
 	{
@@ -116,16 +120,17 @@ void rb(stack **b)
 		tmp->next->data = data_tmp;
 		tmp = tmp->next;
 	}
-	printf("rb\n");
+	return 1;
 }
 
-void rr(stack **a, stack **b)
+int rr(stack **a, stack **b)
 {
-	ra(a);
-	rb(b);
+	if(ra(a) && rb(b))
+		return 1;
+	return 0;
 }
 
-void rra(stack **a)
+int rra(stack **a)
 {
 	stack	*first;
 	stack *tmp;
@@ -136,7 +141,7 @@ void rra(stack **a)
 		tmp = *a;
 	}
 	else
-		return;
+		return 0;
 
 	tmp = tmp->next;
 	while (tmp)
@@ -146,10 +151,10 @@ void rra(stack **a)
 		tmp->data = data_tmp;
 		tmp = tmp->next;
 	}
-	printf("rra\n");
+	return 1;
 }
 
-void rrb(stack **b)
+int rrb(stack **b)
 {
 	stack	*first;
 	stack *tmp;
@@ -160,7 +165,7 @@ void rrb(stack **b)
 		tmp = *b;
 	}
 	else
-		return;
+		return 0;
 
 	tmp = tmp->next;
 	while (tmp)
@@ -170,11 +175,12 @@ void rrb(stack **b)
 		tmp->data = data_tmp;
 		tmp = tmp->next;
 	}
-	printf("rrb");
+	return 1;
 }
 
-void rrr(stack **a, stack **b)
+int rrr(stack **a, stack **b)
 {
-	rra(a);
-	rrb(b);
+	if(rra(a) && rrb(b))
+		return 1;
+	return 0;
 }

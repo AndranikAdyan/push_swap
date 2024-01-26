@@ -53,9 +53,10 @@ static int checkSymbols(char **av, int ac)
 
 static int checkNumberStart(char *str)
 {
-	if ((str[0] == '0' && str[1]) || \
-		((str[0] == '+' || str[0] == '-') && \
-		str[1] == '0'))
+	if((str[0] == '0' && str[1] != ' ' && str[1]))
+		return 0;
+	if((str[0] == '+' || str[0] == '-') && (str[1] == '0' \
+		&& str[2] != ' ' && str[2]))
 			return 0;
 	return 1;
 }
@@ -87,19 +88,23 @@ int checkAll(char **av, int ac)
 	char **arr;
 	while (index < ac)
 	{
-		if(!checkNumberStart(av[index]))
-			return 0;
-
 		i = 0;
 		arr = ft_split(av[index], ' ');
 
 		while (arr[i])
+		{
+			if(!checkNumberStart(arr[i]))
+			{
+				freeSplit(arr);
+				return 0;
+			}
+			
 			if (!intRange(arr[i++]))
 			{
 				freeSplit(arr);
 				return 0;
 			}
-
+		}
 		freeSplit(arr);
 		++index;
 	}

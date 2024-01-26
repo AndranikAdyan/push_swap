@@ -19,17 +19,17 @@ void freeStack(stack **myStack);
 void printStacks(stack *a, stack *b);
 int PushingElemenst(stack **a, char **av, int ac);
 
-void sa(stack **a);
-void sb(stack **b);
-void ss(stack **a, stack **b);
-void pa(stack **a, stack **b);
-void pb(stack **a, stack **b);
-void ra(stack **a);
-void rb(stack **b);
-void rr(stack **a, stack **b);
-void rra(stack **a);
-void rrb(stack **b);
-void rrr(stack **a, stack **b);
+int sa(stack **a);
+int sb(stack **b);
+int ss(stack **a, stack **b);
+int pa(stack **a, stack **b);
+int pb(stack **a, stack **b);
+int ra(stack **a);
+int rb(stack **b);
+int rr(stack **a, stack **b);
+int rra(stack **a);
+int rrb(stack **b);
+int rrr(stack **a, stack **b);
 
 int ft_atoi(char *num);
 long int ft_atol(char *num);
