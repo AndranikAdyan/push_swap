@@ -1,46 +1,58 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: andranik <andranik@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/09 17:04:05 by andranik          #+#    #+#             */
+/*   Updated: 2024/02/10 11:54:50 by andranik         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
-#define PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <limits.h>
-#include <stddef.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+# include <limits.h>
+# include <stddef.h>
 
-typedef struct t_stack
+typedef struct s_stack
 {
 	int				data;
-	struct t_stack	*next; 
-} stack;
+	struct s_stack	*next;
+}	t_stack;
 
-void push(stack **myStack, int data);
-void pop(stack **myStack);
-void freeStack(stack **myStack);
-void printStacks(stack *a, stack *b);
-int PushingElemenst(stack **a, char **av, int ac);
+void		push(t_stack **stack, int data);
+void		pop(t_stack **stack);
+void		freet_stack(t_stack **stack);
+void		printt_stacks(t_stack *a, t_stack *b);
+int			pushing_elemenst(t_stack **a, char **av, int ac);
 
-int sa(stack **a);
-int sb(stack **b);
-int ss(stack **a, stack **b);
-int pa(stack **a, stack **b);
-int pb(stack **a, stack **b);
-int ra(stack **a);
-int rb(stack **b);
-int rr(stack **a, stack **b);
-int rra(stack **a);
-int rrb(stack **b);
-int rrr(stack **a, stack **b);
+int			sa(t_stack **a);
+int			sb(t_stack **b);
+int			ss(t_stack **a, t_stack **b);
+int			pa(t_stack **a, t_stack **b);
+int			pb(t_stack **a, t_stack **b);
+int			ra(t_stack **a);
+int			rb(t_stack **b);
+int			rr(t_stack **a, t_stack **b);
+int			rra(t_stack **a);
+int			rrb(t_stack **b);
+int			rrr(t_stack **a, t_stack **b);
 
-int ft_atoi(char *num);
-long int ft_atol(char *num);
+int			ft_atoi(char *num);
+long int	ft_atol(char *num);
 
-char *ft_substr(char const *s, unsigned int start, size_t len);
+char		*ft_substr(char const *s, unsigned int start, size_t len);
 
-char **ft_split(char *str, char sign);
-void freeSplit(char **arr);
+char		**ft_split(char *str, char sign);
+void		free_split(char **arr);
 
-int checkAll(char **av, int ac);
+int			check_all(char **av, int ac);
 
-int findDublicates(stack **a, int data);
+int			find_dublicates(t_stack **a, int data);
 
 #endif

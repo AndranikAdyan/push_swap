@@ -1,11 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: andranik <andranik@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/09 17:20:32 by andranik          #+#    #+#             */
+/*   Updated: 2024/02/10 11:57:53 by andranik         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <push_swap.h>
 
-int ft_atoi(char *num)
+int	ft_atoi(char *num)
 {
-	int res = 0;
-	int i = 0;
-	while(num[i])
-		res = res * 10 + num[i++] - '0'; 
-	
-	return res;
+	int	res;
+	int	i;
+
+	res = 0;
+	i = 0;
+	while (num[i])
+		res = res * 10 + num[i++] - '0';
+	return (res);
 }

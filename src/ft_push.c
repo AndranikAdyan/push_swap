@@ -1,36 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andranik <andranik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/10 11:40:51 by andranik          #+#    #+#             */
-/*   Updated: 2024/02/10 12:05:22 by andranik         ###   ########.fr       */
+/*   Created: 2024/02/09 17:13:45 by andranik          #+#    #+#             */
+/*   Updated: 2024/02/10 11:50:47 by andranik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
-
-int	main(int argc, char **argv)
+int	pa(t_stack **a, t_stack **b)
 {
-	t_stack	*a;
-	t_stack	*b;
+	int	data;
 
-	if (!check_all(argv, argc))
+	if (*b)
 	{
-		printf("Error!\n");
-		exit(1);
+		data = (*b)->data;
+		pop(b);
+		push(a, data);
+		return (1);
 	}
-	a = NULL;
-	b = NULL;
-	if (!pushing_elemenst(&a, argv, argc))
+	return (0);
+}
+
+int	pb(t_stack **a, t_stack **b)
+{
+	int	data;
+
+	if (*a)
 	{
-		printf("Error!\n");
-		exit(1);
+		data = (*a)->data;
+		pop(a);
+		push(b, data);
+		return (1);
 	}
-	printt_stacks(a, b);
-	freet_stack(&a);
-	freet_stack(&b);
 	return (0);
 }
