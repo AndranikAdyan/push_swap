@@ -29,8 +29,8 @@ int	main(int argc, char **argv)
 		printf("Error!\n");
 		exit(1);
 	}
-	printt_stacks(a, b);
-	freet_stack(&a);
-	freet_stack(&b);
+	print_stacks(a, b);
+	free_stack(&a);
+	free_stack(&b);
 	return (0);
 }

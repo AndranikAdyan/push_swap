@@ -27,8 +27,8 @@ typedef struct s_stack
 
 void		push(t_stack **stack, int data);
 void		pop(t_stack **stack);
-void		freet_stack(t_stack **stack);
-void		printt_stacks(t_stack *a, t_stack *b);
+void		free_stack(t_stack **stack);
+void		print_stacks(t_stack *a, t_stack *b);
 int			pushing_elemenst(t_stack **a, char **av, int ac);
 
 int			sa(t_stack **a);
@@ -54,5 +54,7 @@ void		free_split(char **arr);
 int			check_all(char **av, int ac);
 
 int			find_dublicates(t_stack **a, int data);
+
+
 
 #endif

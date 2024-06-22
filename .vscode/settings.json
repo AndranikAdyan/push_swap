@@ -3,7 +3,8 @@
 		"random": "c",
 		"checker.h": "c",
 		"iostream": "cpp",
-		"ostream": "cpp"
+		"ostream": "cpp",
+		"push_swap.h": "c"
 	},
 	"C_Cpp.errorSquiggles": "disabled"
 }

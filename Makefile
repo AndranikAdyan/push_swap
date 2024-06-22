@@ -1,12 +1,12 @@
 NAME	= push_swap
 
-BONUS	= checker
+# BONUS	= checker
 
 BUILD	= ./build
 
 SRC		= ./src
 
-SRC_B	= ./bonus_src
+# SRC_B	= ./bonus_src
 
 SRCS	= $(shell find $(SRC) -name '*.c')
 
@@ -18,11 +18,11 @@ OBJS_B	= $(patsubst $(SRC_B)%/.c, $(BUILD)/%.o, $(SRCS_B))
 
 INC		= -I ./includes
 
-INC_B	= -I ./bonus_includes
+# INC_B	= -I ./bonus_includes
 
 HEADER	= ./includes/push_swap.h
 
-HEADER_B	= ./bonus_includes/checker.h
+# HEADER_B	= ./bonus_includes/checker.h
 
 FLAGS	=	-Wall -Wextra -Werror -fsanitize=address -g3
 
@@ -44,21 +44,22 @@ ${NAME}:		${OBJS}
 			@$(CC) $(FLAGS) $(OBJS) $(INC) -o ${NAME}
 			@echo "${YELLOW}Done! ${RESET}"
 
-${BONUS}:		${OBJS_B}
-			@$(CC) $(FLAGS) $(OBJS_B) $(INC_B) -o ${BONUS}
-			@echo "${YELLOW}Done! ${RESET}"
+# ${BONUS}:		${OBJS_B}
+# 			@$(CC) $(FLAGS) $(OBJS_B) $(INC_B) -o ${BONUS}
+# 			@echo "${YELLOW}Done! ${RESET}"
 
 $(BUILD):
 	@mkdir -p $(BUILD)
 
-bonus: $(BUILD) $(BONUS)
+# bonus: $(BUILD) $(BONUS)
 
 clean:
 	@rm -rf $(BUILD)
 	@echo "${YELLOW}Done Cleaning! ${RESET}"
 
 fclean:		clean
-			@rm -f ${NAME} ${BONUS}
+			# @rm -f ${NAME} ${BONUS}
+			@rm -f ${NAME}
 			@echo "${YELLOW}Done Fcleaning! ${RESET}"
 
 re:	fclean all

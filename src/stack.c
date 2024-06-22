@@ -32,7 +32,7 @@ void	push(t_stack **stack, int data)
 	}
 }
 
-void	printt_stacks(t_stack *a, t_stack *b)
+void	print_stacks(t_stack *a, t_stack *b)
 {
 	while (a || b)
 	{
@@ -53,7 +53,7 @@ void	printt_stacks(t_stack *a, t_stack *b)
 	printf("_		_\na		b\n");
 }
 
-void	freet_stack(t_stack **stack)
+void	free_stack(t_stack **stack)
 {
 	t_stack	*tmp;
 
