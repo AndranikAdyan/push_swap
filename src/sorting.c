@@ -1,62 +1,46 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sorting.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/20 20:34:31 by aadyan            #+#    #+#             */
+/*   Updated: 2024/07/20 20:47:58 by aadyan           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <push_swap.h>
 
-int		get_min(int *arr, int n)
+int	*fill_zero(int *arr, int n)
 {
-	int min = arr[0];
-	for (int i = 1; i < n; i++)
-		if(min > arr[i])
-			min = arr[i];
-	return min;
-}
+	int		i;
 
-int		get_max(int *arr, int n)
-{
-	int max = arr[0];
-	for (int i = 1; i < n; i++)
-		if(max < arr[i])
-			max = arr[i];
-	return max;
-}
-
-int		*fill_zero(int *arr, int n)
-{
-	int i;
 	i = 0;
-
 	while (i < n)
 		arr[i] = 0;
-	
 	i = 0;
-
 	while (i < n)
 		printf("%d ", arr[i]);
-
-	return arr;
+	return (arr);
 }
 
-// int		*fill_arr(char **av, int ac)
-// {
-	
-// }
-
-void	countingSort(int *arr, int n)
+void	counting_sort(int *arr, int n)
 {
-	int min;
-	int max;
-	int i;
-	int els_count;
+	int	min;
+	int	max;
+	int	i;
+	int	els_count;
+	int	*values_count;
+
 	min = get_min(arr, n);
 	max = get_max(arr, n);
-
 	els_count = (max - min + 1);
-	int *valuesCount = malloc(els_count * sizeof(char));
-
+	*values_count = malloc(els_count * sizeof(char));
 	valuesCount = fill_zero(valuesCount, els_count);
-
 	i = 0;
 	while (i < n)
 		valuesCount[arr[i] - min]++;
-
 	i = 0;
 	while (i < n)
 		printf("%d ", valuesCount[i]);

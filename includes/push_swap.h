@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andranik <andranik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 17:04:05 by andranik          #+#    #+#             */
-/*   Updated: 2024/02/10 11:54:50 by andranik         ###   ########.fr       */
+/*   Updated: 2024/07/20 20:48:10 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,5 @@ void		free_split(char **arr);
 int			check_all(char **av, int ac);
 
 int			find_dublicates(t_stack **a, int data);
-
-
 
 #endif
