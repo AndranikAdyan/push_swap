@@ -42,7 +42,7 @@ $(BUILD)/%.o:	$(SRC_B)/%.c $(HEADER_B) Makefile
 
 ${NAME}:		${OBJS}
 			@$(CC) $(FLAGS) $(OBJS) $(INC) -o ${NAME}
-			@echo "${YELLOW}Done! ${RESET}"
+			@echo "${YELLOW}Done Compiling! ${RESET}"
 
 # ${BONUS}:		${OBJS_B}
 # 			@$(CC) $(FLAGS) $(OBJS_B) $(INC_B) -o ${BONUS}
@@ -58,7 +58,7 @@ clean:
 	@echo "${YELLOW}Done Cleaning! ${RESET}"
 
 fclean:		clean
-			# @rm -f ${NAME} ${BONUS}
+			@rm -f ${NAME} ${BONUS}
 			@rm -f ${NAME}
 			@echo "${YELLOW}Done Fcleaning! ${RESET}"
 

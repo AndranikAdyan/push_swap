@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andranik <andranik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 11:40:51 by andranik          #+#    #+#             */
-/*   Updated: 2024/02/10 12:05:22 by andranik         ###   ########.fr       */
+/*   Updated: 2024/08/01 19:35:23 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	main(int argc, char **argv)
 	}
 	a = NULL;
 	b = NULL;
+
 	if (!pushing_elemenst(&a, argv, argc))
 	{
 		printf("Error!\n");

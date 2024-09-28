@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 17:04:05 by andranik          #+#    #+#             */
-/*   Updated: 2024/07/20 20:48:10 by aadyan           ###   ########.fr       */
+/*   Updated: 2024/07/24 20:51:06 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,10 @@ void		free_split(char **arr);
 int			check_all(char **av, int ac);
 
 int			find_dublicates(t_stack **a, int data);
+
+int			get_min(int *arr, int n);
+int			get_max(int *arr, int n);
+
+int			*counting_sort(int *arr, int n, int min, int max);
 
 #endif
