@@ -4,7 +4,9 @@
 		"checker.h": "c",
 		"iostream": "cpp",
 		"ostream": "cpp",
-		"push_swap.h": "c"
+		"push_swap.h": "c",
+		"limits.h": "c",
+		"stddef.h": "c"
 	},
 	"C_Cpp.errorSquiggles": "disabled"
 }

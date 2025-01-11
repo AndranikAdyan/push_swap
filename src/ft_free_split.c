@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_free_split.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andranik <andranik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/09 17:20:32 by andranik          #+#    #+#             */
-/*   Updated: 2024/02/10 11:57:53 by andranik         ###   ########.fr       */
+/*   Created: 2024/02/09 17:23:02 by andranik          #+#    #+#             */
+/*   Updated: 2025/01/11 18:35:40 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-int	ft_atoi(char *num)
+void	free_split(char **arr)
 {
-	int	res;
-	int	i;
+	int		i;
 
-	res = 0;
 	i = 0;
-	while (num[i])
-		res = res * 10 + num[i++] - '0';
-	return (res);
+	while (arr[i])
+		free(arr[i++]);
+	free(arr);
+	arr = NULL;
 }

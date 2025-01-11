@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 17:04:05 by andranik          #+#    #+#             */
-/*   Updated: 2025/01/11 18:06:33 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/01/11 19:26:40 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,17 @@
 # include <string.h>
 # include <limits.h>
 # include <stddef.h>
+# include "libft.h"
+
+typedef struct s_data
+{
+	int		number;
+	size_t	index;
+}	t_data;
 
 typedef struct s_stack
 {
-	int				*data;
+	t_data			data;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -43,21 +50,12 @@ int			rra(t_stack **a);
 int			rrb(t_stack **b);
 int			rrr(t_stack **a, t_stack **b);
 
-int			ft_atoi(char *num);
 long int	ft_atol(char *num);
 
-char		*ft_substr(char const *s, unsigned int start, size_t len);
-
-char		**ft_split(char *str, char sign);
 void		free_split(char **arr);
 
 int			check_all(char **av, int ac);
 
-int			find_dublicates(t_stack **a, int data);
-
-int			get_min(int *arr, int n);
-int			get_max(int *arr, int n);
-
-int			*counting_sort(int *arr, int n, int min, int max);
+int			find_dublicates(t_stack *a, int data);
 
 #endif

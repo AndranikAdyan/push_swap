@@ -1,67 +1,55 @@
-NAME	= push_swap
+NAME 			= push_swap
 
-# BONUS	= checker
+BONUS			= checker
 
-BUILD	= ./build
+BUILD			= ./build
 
-SRC		= ./src
+SRC				= ./src
 
-# SRC_B	= ./bonus_src
 
-SRCS	= $(shell find $(SRC) -name '*.c')
+SRCS 			= $(shell find $(SRC) -name '*.c')
 
-SRCS_B	= $(shell find $(SRC_B) -name '*.c')
+OBJS 			= $(patsubst $(SRC)/%.c, $(BUILD)/%.o, $(SRCS))
 
-OBJS	= $(patsubst $(SRC)/%.c, $(BUILD)/%.o, $(SRCS))
+INCS			= -I./includes -I./Libft
 
-OBJS_B	= $(patsubst $(SRC_B)%/.c, $(BUILD)/%.o, $(SRCS_B))
+INCS_B			= -I./bonus_includes -I./Libft
 
-INC		= -I ./includes
+HEADER			= ./includes/push_swap.h
 
-# INC_B	= -I ./bonus_includes
+FLAGS			= -Wall -Wextra -Werror -fsanitize=address -g
 
-HEADER	= ./includes/push_swap.h
+LIBFT			= -LLibft -lft
 
-# HEADER_B	= ./bonus_includes/checker.h
+CC				= cc
 
-FLAGS	=	-Wall -Wextra -Werror -fsanitize=address -g3
-
-all:	$(BUILD) $(NAME)
-
-RESET			= \033[0m
-YELLOW			= \033[38;2;255;239;0m
-GREEN			= 	\033[0;32m
+all:			$(BUILD) lib $(NAME)
 
 $(BUILD)/%.o:	$(SRC)/%.c $(HEADER) Makefile
-				@echo "${GREEN} Compiling $<${RESET}"
-				@$(CC) $(FLAGS) $(INC) -c $< -o $@
+		$(CC) $(FLAGS) $(INCS) -c $< -o $@
 
-$(BUILD)/%.o:	$(SRC_B)/%.c $(HEADER_B) Makefile
-				@echo "${GREEN} Compiling $<${RESET}"
-				@$(CC) $(FLAGS) $(INC_B) -c $< -o $@
+$(BUILD)/%.o:	$(SRC_B)/%.c $(HEADER_BONUS) Makefile
+		$(CC) $(FLAGS) $(INCS_B) -c $< -o $@
 
 ${NAME}:		${OBJS}
-			@$(CC) $(FLAGS) $(OBJS) $(INC) -o ${NAME}
-			@echo "${YELLOW}Done Compiling! ${RESET}"
-
-# ${BONUS}:		${OBJS_B}
-# 			@$(CC) $(FLAGS) $(OBJS_B) $(INC_B) -o ${BONUS}
-# 			@echo "${YELLOW}Done! ${RESET}"
+		$(CC) $(FLAGS) $(OBJS) $(INCS) -o ${NAME} $(LIBFT)
 
 $(BUILD):
-	@mkdir -p $(BUILD)
+		@mkdir -p $(BUILD)
 
-# bonus: $(BUILD) $(BONUS)
+lib:
+		@make -C Libft
 
 clean:
-	@rm -rf $(BUILD)
-	@echo "${YELLOW}Done Cleaning! ${RESET}"
+		rm -rf $(BUILD)
+		@make clean -C Libft
 
 fclean:		clean
-			@rm -f ${NAME} ${BONUS}
-			@rm -f ${NAME}
-			@echo "${YELLOW}Done Fcleaning! ${RESET}"
+		rm -f ${NAME} ${BONUS}
+		@make fclean -C Libft
 
-re:	fclean all
+re:			fclean all
 
-.PHONY: all clean fclean re
+bonus:		$(BUILD) lib $(BONUS)
+
+.PHONY:		all clean fclean re bonus

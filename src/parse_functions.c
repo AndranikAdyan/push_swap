@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 11:42:28 by andranik          #+#    #+#             */
-/*   Updated: 2025/01/10 21:01:20 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/01/11 19:27:20 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,12 @@ static int	int_range(char *str)
 	i = 0;
 	while (str[i] == 0)
 		i++;
+	len = 0;
 	while (str[i++])
 	{
 		len++;
 		if (len >= 11)
-			return (1);
+			return (0);
 	}
 	if (ft_atol(str) >= INT_MIN && ft_atol(str) <= INT_MAX)
 		return (1);
@@ -68,16 +69,13 @@ static int	check_symbols(char **av, int ac)
 	return (1);
 }
 
-int	find_dublicates(t_stack **a, int data)
+int	find_dublicates(t_stack *a, int data)
 {
-	t_stack	*tmp;
-
-	tmp = *a;
-	while (tmp)
+	while (a)
 	{
-		if (data == tmp->data)
+		if (data == a->data.number)
 			return (1);
-		tmp = tmp->next;
+		a = a->next;
 	}
 	return (0);
 }

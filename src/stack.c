@@ -3,14 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andranik <andranik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 11:56:43 by andranik          #+#    #+#             */
-/*   Updated: 2024/02/10 12:04:19 by andranik         ###   ########.fr       */
+/*   Updated: 2025/01/11 19:41:58 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
+#include "push_swap.h"
+
+size_t	get_index(t_stack *stack, int num)
+{
+	size_t	index;
+
+	if (!stack)
+		return (0);
+	index = 0;
+	while (stack)
+	{
+		if (num < stack->data.number)
+		{
+			stack->data.index++;
+			if (index > stack->data.index)
+				index = stack->data.index - 1;
+		}
+		else if (stack->data.index >= index)
+			index = stack->data.index + 1;
+		stack = stack->next;
+	}
+	return (index);
+}
 
 void	push(t_stack **stack, int data)
 {
@@ -19,7 +41,8 @@ void	push(t_stack **stack, int data)
 	new_node = malloc(sizeof(t_stack));
 	if (!new_node)
 		exit(12);
-	new_node->data = data;
+	new_node->data.number = data;
+	new_node->data.index = get_index(*stack, data);
 	if (stack && *stack)
 	{
 		new_node->next = *stack;
@@ -38,14 +61,14 @@ void	print_stacks(t_stack *a, t_stack *b)
 	{
 		if (a)
 		{
-			printf("%d    ", a->data);
+			printf("%d    index=%zu", a->data.number, a->data.index);
 			a = a->next;
 		}
 		else
 			printf("     ");
 		if (b)
 		{
-			printf("%d", b->data);
+			printf("%d", b->data.number);
 			b = b->next;
 		}
 		printf("\n");
@@ -97,7 +120,7 @@ int	pushing_elemenst(t_stack **a, char **av, int ac)
 		arr = ft_split(av[index], ' ');
 		while (arr[i])
 		{
-			if (find_dublicates(a, atoi(arr[i])))
+			if (find_dublicates(*a, atoi(arr[i])))
 			{
 				free_split(arr);
 				return (0);
