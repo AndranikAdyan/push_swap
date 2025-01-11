@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parseFunctions.c                                   :+:      :+:    :+:   */
+/*   parse_functions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andranik <andranik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 11:42:28 by andranik          #+#    #+#             */
-/*   Updated: 2024/02/10 12:03:38 by andranik         ###   ########.fr       */
+/*   Updated: 2025/01/10 21:01:20 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
+#include "push_swap.h"
 
 static int	int_range(char *str)
 {
@@ -23,10 +23,10 @@ static int	int_range(char *str)
 	while (str[i++])
 	{
 		len++;
-		if (len > 11)
+		if (len >= 11)
 			return (1);
 	}
-	if (atol(str) >= INT_MIN && atol(str) <= INT_MAX)
+	if (ft_atol(str) >= INT_MIN && ft_atol(str) <= INT_MAX)
 		return (1);
 	return (0);
 }
