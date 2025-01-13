@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 17:04:05 by andranik          #+#    #+#             */
-/*   Updated: 2025/01/11 19:26:40 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/01/13 19:50:47 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 # define PUSH_SWAP_H
 
 # include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
 # include <limits.h>
-# include <stddef.h>
 # include "libft.h"
 
 typedef struct s_data
@@ -28,7 +25,7 @@ typedef struct s_data
 
 typedef struct s_stack
 {
-	t_data			data;
+	t_data			*data;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -38,17 +35,18 @@ void		free_stack(t_stack **stack);
 void		print_stacks(t_stack *a, t_stack *b);
 int			pushing_elemenst(t_stack **a, char **av, int ac);
 
-int			sa(t_stack **a);
-int			sb(t_stack **b);
-int			ss(t_stack **a, t_stack **b);
-int			pa(t_stack **a, t_stack **b);
-int			pb(t_stack **a, t_stack **b);
-int			ra(t_stack **a);
-int			rb(t_stack **b);
-int			rr(t_stack **a, t_stack **b);
-int			rra(t_stack **a);
-int			rrb(t_stack **b);
-int			rrr(t_stack **a, t_stack **b);
+void		swap_data(t_data *data1, t_data *data2);
+int			sa(t_stack **a, int mess);
+int			sb(t_stack **b, int mess);
+int			ss(t_stack **a, t_stack **b, int mess);
+int			pa(t_stack **a, t_stack **b, int mess);
+int			pb(t_stack **a, t_stack **b, int mess);
+int			ra(t_stack **a, int mess);
+int			rb(t_stack **b, int mess);
+int			rr(t_stack **a, t_stack **b, int mess);
+int			rra(t_stack **a, int mess);
+int			rrb(t_stack **b, int mess);
+int			rrr(t_stack **a, t_stack **b, int mess);
 
 long int	ft_atol(char *num);
 

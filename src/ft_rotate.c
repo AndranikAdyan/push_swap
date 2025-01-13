@@ -1,57 +1,58 @@
-// /* ************************************************************************** */
-// /*                                                                            */
-// /*                                                        :::      ::::::::   */
-// /*   ft_rotate.c                                        :+:      :+:    :+:   */
-// /*                                                    +:+ +:+         +:+     */
-// /*   By: andranik <andranik@student.42.fr>          +#+  +:+       +#+        */
-// /*                                                +#+#+#+#+#+   +#+           */
-// /*   Created: 2024/02/09 17:14:28 by andranik          #+#    #+#             */
-// /*   Updated: 2024/02/10 12:04:27 by andranik         ###   ########.fr       */
-// /*                                                                            */
-// /* ************************************************************************** */
-// #include <push_swap.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_rotate.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/09 17:14:28 by andranik          #+#    #+#             */
+/*   Updated: 2025/01/13 19:51:13 by aadyan           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-// int	ra(t_stack **a)
-// {
-// 	int		data_tmp;
-// 	t_stack	*tmp;
+#include "push_swap.h"
 
-// 	if (*a)
-// 		tmp = *a;
-// 	else
-// 		return (0);
-// 	while (tmp && tmp->next)
-// 	{
-// 		data_tmp = tmp->data;
-// 		tmp->data = tmp->next->data;
-// 		tmp->next->data = data_tmp;
-// 		tmp = tmp->next;
-// 	}
-// 	return (1);
-// }
+int	ra(t_stack **a, int mess)
+{
+	t_stack	*tmp;
 
-// int	rb(t_stack **b)
-// {
-// 	int		data_tmp;
-// 	t_stack	*tmp;
+	if (!(*a))
+		return (0);
+	tmp = *a;
+	while (tmp && tmp->next)
+	{
+		swap_data(tmp->data, tmp->next->data);
+		tmp = tmp->next;
+	}
+	if (mess)
+		ft_putstr_fd("ra", 1);
+	return (1);
+}
 
-// 	if (*b)
-// 		tmp = *b;
-// 	else
-// 		return (0);
-// 	while (tmp && tmp->next)
-// 	{
-// 		data_tmp = tmp->data;
-// 		tmp->data = tmp->next->data;
-// 		tmp->next->data = data_tmp;
-// 		tmp = tmp->next;
-// 	}
-// 	return (1);
-// }
+int	rb(t_stack **b, int mess)
+{
+	t_stack	*tmp;
 
-// int	rr(t_stack **a, t_stack **b)
-// {
-// 	if (ra(a) && rb(b))
-// 		return (1);
-// 	return (0);
-// }
+	if (!(*b))
+		return (0);
+	tmp = *b;
+	while (tmp && tmp->next)
+	{
+		swap_data(tmp->data, tmp->next->data);
+		tmp = tmp->next;
+	}
+	if (mess)
+		ft_putstr_fd("ra", 1);
+	return (1);
+}
+
+int	rr(t_stack **a, t_stack **b, int mess)
+{
+	if (ra(a, 0) && rb(b, 0))
+	{
+		if (mess)
+			ft_putstr_fd("ra", 1);
+		return (1);
+	}
+	return (0);
+}

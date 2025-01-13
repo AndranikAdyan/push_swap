@@ -1,12 +1,5 @@
 {
 	"files.associations": {
-		"random": "c",
-		"checker.h": "c",
-		"iostream": "cpp",
-		"ostream": "cpp",
-		"push_swap.h": "c",
-		"limits.h": "c",
-		"stddef.h": "c"
-	},
-	"C_Cpp.errorSquiggles": "disabled"
+		"push_swap.h": "c"
+	}
 }

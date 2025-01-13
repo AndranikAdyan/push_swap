@@ -1,47 +1,63 @@
-// /* ************************************************************************** */
-// /*                                                                            */
-// /*                                                        :::      ::::::::   */
-// /*   ft_swap.c                                          :+:      :+:    :+:   */
-// /*                                                    +:+ +:+         +:+     */
-// /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
-// /*                                                +#+#+#+#+#+   +#+           */
-// /*   Created: 2024/02/09 17:12:09 by andranik          #+#    #+#             */
-// /*   Updated: 2025/01/11 19:25:26 by aadyan           ###   ########.fr       */
-// /*                                                                            */
-// /* ************************************************************************** */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/09 17:12:09 by andranik          #+#    #+#             */
+/*   Updated: 2025/01/13 19:38:44 by aadyan           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "push_swap.h"
 
-// int	sa(t_stack **a)
-// {
-// 	int	tmp;
+void	swap_data(t_data *data1, t_data *data2)
+{
+	int		tmp_number;
+	size_t	tmp_index;
 
-// 	if (*a && (*a)->next)
-// 	{
-// 		tmp = (*a)->data;
-// 		(*a)->data = (*a)->next->data;
-// 		(*a)->next->data = tmp;
-// 		return (1);
-// 	}
-// 	return (0);
-// }
+	tmp_number = data1->number;
+	data1->number = data2->number;
+	data2->number = tmp_number;
+	tmp_index = data1->index;
+	data1->index = data2->index;
+	data2->index = tmp_index;
+}
 
-// int	sb(t_stack **b)
-// {
-// 	int	tmp;
+int	sa(t_stack **a, int mess)
+{
+	if (*a && (*a)->next)
+	{
+		swap_data((*a)->data, (*a)->next->data);
+		if (mess)
+			ft_putstr_fd("sa\n", 1);
+		return (1);
+	}
+	return (0);
+}
 
-// 	if (*b && (*b)->next)
-// 	{
-// 		tmp = (*b)->data;
-// 		(*b)->data = (*b)->next->data;
-// 		(*b)->next->data = tmp;
-// 		return (1);
-// 	}
-// 	return (0);
-// }
+int	sb(t_stack **b, int mess)
+{
+	if (*b && (*b)->next)
+	{
+		swap_data((*b)->data, (*b)->next->data);
+		if (mess)
+			ft_putstr_fd("sb\n", 1);
+		return (1);
+	}
+	return (0);
+}
 
-// int	ss(t_stack **a, t_stack **b)
-// {
-// 	if (sa(a) && sb(b))
-// 		return (1);
-// 	return (0);
-// }
+int	ss(t_stack **a, t_stack **b, int mess)
+{
+	if (*a && (*a)->next && *b && (*b)->next)
+	{
+		swap_data((*a)->data, (*a)->next->data);
+		swap_data((*b)->data, (*b)->next->data);
+		if (mess)
+			ft_putstr_fd("ss\n", 1);
+		return (1);
+	}
+	return (0);
+}

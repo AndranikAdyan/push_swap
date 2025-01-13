@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 11:42:28 by andranik          #+#    #+#             */
-/*   Updated: 2025/01/11 19:27:20 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/01/12 01:03:01 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	find_dublicates(t_stack *a, int data)
 {
 	while (a)
 	{
-		if (data == a->data.number)
+		if (data == a->data->number)
 			return (1);
 		a = a->next;
 	}

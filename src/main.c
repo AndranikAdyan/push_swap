@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 11:40:51 by andranik          #+#    #+#             */
-/*   Updated: 2025/01/11 19:17:13 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/01/13 19:51:02 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,17 @@ int	main(int argc, char **argv)
 		exit(1);
 	}
 	print_stacks(a, b);
+
+	pb(&a, &b, 1);
+	pb(&a, &b, 1);
+	printf("\n======\n");
+	print_stacks(a, b);
+
+	sa(&a, 1);
+	sb(&b, 1);
+	printf("\n======\n");
+	print_stacks(a, b);
+
 	free_stack(&a);
 	free_stack(&b);
 	return (0);

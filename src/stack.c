@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 11:56:43 by andranik          #+#    #+#             */
-/*   Updated: 2025/01/11 19:41:58 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/01/13 14:00:12 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,28 +21,29 @@ size_t	get_index(t_stack *stack, int num)
 	index = 0;
 	while (stack)
 	{
-		if (num < stack->data.number)
+		if (num < stack->data->number)
 		{
-			stack->data.index++;
-			if (index > stack->data.index)
-				index = stack->data.index - 1;
+			stack->data->index++;
+			if (index > stack->data->index)
+				index = stack->data->index - 1;
 		}
-		else if (stack->data.index >= index)
-			index = stack->data.index + 1;
+		else if (stack->data->index >= index)
+			index = stack->data->index + 1;
 		stack = stack->next;
 	}
 	return (index);
 }
 
-void	push(t_stack **stack, int data)
+void	push(t_stack **stack, int num)
 {
 	t_stack	*new_node;
 
 	new_node = malloc(sizeof(t_stack));
 	if (!new_node)
 		exit(12);
-	new_node->data.number = data;
-	new_node->data.index = get_index(*stack, data);
+	new_node->data = (t_data*)malloc(sizeof(t_data));
+	new_node->data->number = num;
+	new_node->data->index = get_index(*stack, num);
 	if (stack && *stack)
 	{
 		new_node->next = *stack;
@@ -59,16 +60,16 @@ void	print_stacks(t_stack *a, t_stack *b)
 {
 	while (a || b)
 	{
-		if (a)
+		if (a && a->data)
 		{
-			printf("%d    index=%zu", a->data.number, a->data.index);
+			printf("%d    index=%zu", a->data->number, a->data->index);
 			a = a->next;
 		}
 		else
-			printf("     ");
-		if (b)
+			printf("          ");
+		if (b && b->data)
 		{
-			printf("%d", b->data.number);
+			printf("    %d    index=%zu", b->data->number, b->data->index);
 			b = b->next;
 		}
 		printf("\n");
@@ -83,6 +84,7 @@ void	free_stack(t_stack **stack)
 	while (*stack)
 	{
 		tmp = (*stack)->next;
+		free((*stack)->data);
 		free(*stack);
 		(*stack) = tmp;
 	}
@@ -95,16 +97,17 @@ void	pop(t_stack **stack)
 	if (*stack && (*stack)->next)
 	{
 		tmp = (*stack)->next;
+		free((*stack)->data);
 		free(*stack);
 		(*stack) = tmp;
 	}
 	else if (*stack)
 	{
+		free((*stack)->data);
 		free(*stack);
+		(*stack)->data = NULL;
 		*stack = NULL;
 	}
-	else
-		printf("\nt_stack is empty\n");
 }
 
 int	pushing_elemenst(t_stack **a, char **av, int ac)

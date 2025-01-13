@@ -2,6 +2,9 @@
 *.exe
 *.out
 *.o
-
+.vscode
+./build
+.DS_Store
 push_swap
 checker
+.vscode/
