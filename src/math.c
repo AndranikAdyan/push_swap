@@ -1,45 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   math.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/10 11:40:51 by andranik          #+#    #+#             */
-/*   Updated: 2025/01/15 21:32:01 by aadyan           ###   ########.fr       */
+/*   Created: 2025/01/14 21:07:49 by aadyan            #+#    #+#             */
+/*   Updated: 2025/01/14 21:29:20 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
+// #include "push_swap.h"
 
-int	main(int argc, char **argv)
+int	ft_sqrt(int nb)
 {
-	t_stack	*a;
-	t_stack	*b;
+	int	num;
 
-	if (!check_all(argv, argc))
+	if (nb == 0 || nb == 1)
+		return (1);
+	num = 1;
+	while (num <= nb / 2)
 	{
-		printf("Error!\n");
-		return (0);
+		if (num * num == nb)
+			return (num);
+		else if (num * num > nb)
+			return (num - 1);
+		++num;
 	}
-	a = NULL;
-	b = NULL;
+	return (-1);
+}
 
-	if (!pushing_elemenst(&a, argv, argc))
-	{
-		printf("Error!\n");
-		return (0);
-	}
-	if (is_sorted(a))
-	{
-		free_stack(&a);
-		free_stack(&b);
-		return (0);
-	}
-	sort_under_12(a, b);
-	print_stacks(a, b);
+int	ft_log2(int n)
+{
+	int	count;
+	int	num;
 
-	free_stack(&a);
-	free_stack(&b);
-	return (0);
+	num = 1;
+	count = 0;
+	while (num < n)
+	{
+		++count;
+		num *= 2;
+	}
+	return (count);
+}
+
+int	get_n(int n)
+{
+	return (ft_sqrt(n) + ft_log2(n) - 1);
 }

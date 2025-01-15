@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 17:13:45 by andranik          #+#    #+#             */
-/*   Updated: 2025/01/13 19:31:39 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/01/15 21:28:34 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,27 @@ void	push_from_stack(t_stack **stack, int num, int index)
 		*stack = new_node;
 	}
 }
-
+void	ft_lstadd_front(t_stack **lst, t_stack *new)
+{
+	if (new)
+	{
+		new->next = *lst;
+		*lst = new;
+	}
+	return ;
+}
 
 int	pa(t_stack **a, t_stack **b, int mess)
 {
+	t_stack	*tmp;
 	if (*b)
 	{
-		push_from_stack(a, (*b)->data->number, (*b)->data->index);
-		pop(b);
+		tmp = *b;
+		*b = (*b)->next;
+		tmp->next = NULL;
+		ft_lstadd_front(a, tmp);
 		if (mess)
-			ft_putstr_fd("pa", 1);
+			ft_putstr_fd("pa\n", 1);
 		return (1);
 	}
 	return (0);
@@ -52,12 +63,15 @@ int	pa(t_stack **a, t_stack **b, int mess)
 
 int	pb(t_stack **a, t_stack **b, int mess)
 {
+	t_stack	*tmp;
 	if (*a)
 	{
-		push_from_stack(b, (*a)->data->number, (*a)->data->index);
-		pop(a);
+		tmp = *a;
+		*a = (*a)->next;
+		tmp->next = NULL;
+		ft_lstadd_front(b, tmp);
 		if (mess)
-			ft_putstr_fd("pb", 1);
+			ft_putstr_fd("pb\n", 1);
 		return (1);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 11:56:43 by andranik          #+#    #+#             */
-/*   Updated: 2025/01/13 14:00:12 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/01/14 21:31:30 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,6 @@ void	pop(t_stack **stack)
 	{
 		free((*stack)->data);
 		free(*stack);
-		(*stack)->data = NULL;
-		*stack = NULL;
 	}
 }
 

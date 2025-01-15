@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 17:04:05 by andranik          #+#    #+#             */
-/*   Updated: 2025/01/13 19:50:47 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/01/15 21:30:31 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,12 @@ void		free_split(char **arr);
 int			check_all(char **av, int ac);
 
 int			find_dublicates(t_stack *a, int data);
+
+int			ft_lstsize(t_stack *lst);
+
+int		is_sorted(t_stack *a);
+int		get_n(int n);
+void	butterfly(t_stack **a, t_stack **b);
+void	sort_under_12(t_stack *a, t_stack *b);
 
 #endif
