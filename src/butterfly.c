@@ -6,11 +6,23 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 20:54:12 by aadyan            #+#    #+#             */
-/*   Updated: 2025/01/15 18:41:21 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/01/16 02:10:48 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	push_from_b(t_stack **a, t_stack **b)
+{
+	int	size;
+
+	size = ft_lstsize(*b);
+	while (size > 0)
+	{
+		move_node_to_up(b, --size);
+		pa(a, b, 1);
+	}
+}
 
 void	butterfly(t_stack **a, t_stack **b)
 {
@@ -18,8 +30,6 @@ void	butterfly(t_stack **a, t_stack **b)
 	size_t	counter;
 
 	n = get_n(ft_lstsize(*a));
-	// printf("n = %ld\n", n);
-	n = 15;
 	counter = 0;
 
 	while ((*a))
@@ -38,4 +48,6 @@ void	butterfly(t_stack **a, t_stack **b)
 		else
 			ra(a, 1);
 	}
+	push_from_b(a, b);
 }
+

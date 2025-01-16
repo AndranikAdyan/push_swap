@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   sort_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andranik <andranik@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/09 17:21:37 by andranik          #+#    #+#             */
-/*   Updated: 2024/02/10 11:58:09 by andranik         ###   ########.fr       */
+/*   Created: 2025/01/16 01:58:25 by aadyan            #+#    #+#             */
+/*   Updated: 2025/01/16 02:11:20 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
+#include "push_swap.h"
 
-long int	ft_atol(char *num)
+void	sort_stack(t_stack **a, t_stack **b)
 {
-	long int	res;
-	int			i;
+	int	size;
 
-	res = 0;
-	i = 0;
-	while (num[i])
-		res = res * 10 + num[i++] - '0';
-	return (res);
+	size = ft_lstsize(*a);
+	if (size == 1)
+		return ;
+	else if (size == 2)
+		sa(a, 1);
+	else if (size <= 12)
+		sort_under_12(*a, *b);
+	else
+		butterfly(a, b);
 }

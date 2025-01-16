@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 17:04:05 by andranik          #+#    #+#             */
-/*   Updated: 2025/01/15 21:30:31 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/01/16 01:58:09 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,12 @@ int			find_dublicates(t_stack *a, int data);
 
 int			ft_lstsize(t_stack *lst);
 
-int		is_sorted(t_stack *a);
-int		get_n(int n);
-void	butterfly(t_stack **a, t_stack **b);
-void	sort_under_12(t_stack *a, t_stack *b);
+int			is_sorted(t_stack *a);
+int			get_n(int n);
+void		butterfly(t_stack **a, t_stack **b);
+void		sort_3(t_stack *stack);
+void		sort_under_12(t_stack *a, t_stack *b);
+void		move_node_to_up(t_stack **stack, size_t index);
+void		sort_stack(t_stack **a, t_stack **b);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 17:14:28 by andranik          #+#    #+#             */
-/*   Updated: 2025/01/14 21:30:57 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/01/16 02:02:12 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	rb(t_stack **b, int mess)
 		tmp = tmp->next;
 	}
 	if (mess)
-		ft_putstr_fd("ra\n", 1);
+		ft_putstr_fd("rb\n", 1);
 	return (1);
 }
 
@@ -51,7 +51,7 @@ int	rr(t_stack **a, t_stack **b, int mess)
 	if (ra(a, 0) && rb(b, 0))
 	{
 		if (mess)
-			ft_putstr_fd("ra\n", 1);
+			ft_putstr_fd("rr\n", 1);
 		return (1);
 	}
 	return (0);
