@@ -6,7 +6,6 @@ BUILD			= ./build
 
 SRC				= ./src
 
-
 SRCS 			= $(shell find $(SRC) -name '*.c')
 
 OBJS 			= $(patsubst $(SRC)/%.c, $(BUILD)/%.o, $(SRCS))

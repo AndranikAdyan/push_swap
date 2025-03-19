@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 11:56:43 by andranik          #+#    #+#             */
-/*   Updated: 2025/01/16 00:42:51 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/03/19 19:30:45 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,44 +37,24 @@ size_t	get_index(t_stack *stack, int num)
 void	push(t_stack **stack, int num)
 {
 	t_stack	*new_node;
+	t_stack	*tmp;
 
-	new_node = malloc(sizeof(t_stack));
+	new_node = (t_stack *)malloc(sizeof(t_stack));
 	if (!new_node)
 		exit(12);
-	new_node->data = (t_data*)malloc(sizeof(t_data));
+	new_node->data = (t_data *)malloc(sizeof(t_data));
 	new_node->data->number = num;
 	new_node->data->index = get_index(*stack, num);
-	if (stack && *stack)
+	new_node->next = NULL;
+	if (!*stack)
 	{
-		new_node->next = *stack;
 		*stack = new_node;
+		return ;
 	}
-	else
-	{
-		new_node->next = NULL;
-		*stack = new_node;
-	}
-}
-
-void	print_stacks(t_stack *a, t_stack *b)
-{
-	while (a || b)
-	{
-		if (a && a->data)
-		{
-			printf("%d    index=%zu", a->data->number, a->data->index);
-			a = a->next;
-		}
-		else
-			printf("          ");
-		if (b && b->data)
-		{
-			printf("    %d    index=%zu", b->data->number, b->data->index);
-			b = b->next;
-		}
-		printf("\n");
-	}
-	printf("_		_\na		b\n");
+	tmp = *stack;
+	while (tmp && tmp->next)
+		tmp = tmp->next;
+	tmp->next = new_node;
 }
 
 void	free_stack(t_stack **stack)

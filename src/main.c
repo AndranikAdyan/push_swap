@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 11:40:51 by andranik          #+#    #+#             */
-/*   Updated: 2025/01/16 02:20:24 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/03/19 19:14:36 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	sort_stack(&a, &b);
-
-	print_stacks(a, b);
 	free_stack(&a);
 	free_stack(&b);
 	return (0);

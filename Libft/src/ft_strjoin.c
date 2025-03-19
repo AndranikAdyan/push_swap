@@ -6,30 +6,30 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 09:59:45 by aadyan            #+#    #+#             */
-/*   Updated: 2024/10/09 17:53:34 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/01/17 23:38:40 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *str1, char *str2)
 {
-	char	*str;
 	int		i;
-	int		index;
+	int		j;
+	char	*str;
 
-	if (!s1 || !s2)
-		return (NULL);
-	str = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	str = malloc(sizeof(char) * (ft_strlen(str1) + ft_strlen(str2) + 1));
 	if (!str)
 		return (NULL);
-	i = -1;
-	index = -1;
-	while (s1[++i])
-		str[++index] = s1[i];
-	i = -1;
-	while (s2[++i])
-		str[++index] = s2[i];
-	str[++index] = '\0';
+	i = 0;
+	j = 0;
+	while (str1 && str1[i])
+		str[j++] = str1[i++];
+	i = 0;
+	while (str2 && str2[i])
+		str[j++] = str2[i++];
+	str[j] = '\0';
+	if (str1)
+		free(str1);
 	return (str);
 }

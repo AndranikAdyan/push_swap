@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 18:48:22 by aadyan            #+#    #+#             */
-/*   Updated: 2025/01/17 23:35:07 by aadyan           ###   ########.fr       */
+/*   Created: 2025/03/19 19:29:01 by aadyan            #+#    #+#             */
+/*   Updated: 2025/03/19 19:30:32 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-char	*ft_strrchr(const char *s, int c)
+void	ft_lstadd_front(t_stack **lst, t_stack *new)
 {
-	int			i;
-
-	i = ft_strlen(s);
-	while (i >= 0)
+	if (new)
 	{
-		if (s[i] == (char)c)
-			return ((char *)s + i);
-		--i;
+		new->next = *lst;
+		*lst = new;
 	}
-	if (c == '\0')
-		return ((char *)s + i);
-	return (NULL);
+	return ;
+}
+
+t_stack	*ft_lstlast(t_stack *lst)
+{
+	if (!lst)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }

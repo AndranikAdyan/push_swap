@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 17:13:45 by andranik          #+#    #+#             */
-/*   Updated: 2025/01/15 21:28:34 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/03/19 19:31:19 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	push_from_stack(t_stack **stack, int num, int index)
 	new_node = malloc(sizeof(t_stack));
 	if (!new_node)
 		exit(12);
-	new_node->data = (t_data*)malloc(sizeof(t_data));
+	new_node->data = (t_data *)malloc(sizeof(t_data));
 	if (!new_node->data)
 		exit(12);
 	new_node->data->number = num;
@@ -35,19 +35,27 @@ void	push_from_stack(t_stack **stack, int num, int index)
 		*stack = new_node;
 	}
 }
-void	ft_lstadd_front(t_stack **lst, t_stack *new)
+
+void	ft_lstadd_back(t_stack **lst, t_stack *new)
 {
-	if (new)
+	t_stack	*tmp;
+
+	if (lst)
 	{
-		new->next = *lst;
-		*lst = new;
+		if (!*lst)
+			*lst = new;
+		else
+		{
+			tmp = ft_lstlast(*lst);
+			tmp->next = new;
+		}
 	}
-	return ;
 }
 
 int	pa(t_stack **a, t_stack **b, int mess)
 {
 	t_stack	*tmp;
+
 	if (*b)
 	{
 		tmp = *b;
@@ -64,6 +72,7 @@ int	pa(t_stack **a, t_stack **b, int mess)
 int	pb(t_stack **a, t_stack **b, int mess)
 {
 	t_stack	*tmp;
+
 	if (*a)
 	{
 		tmp = *a;
