@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 18:48:22 by aadyan            #+#    #+#             */
-/*   Updated: 2025/01/17 23:35:07 by aadyan           ###   ########.fr       */
+/*   Created: 2025/01/14 21:05:47 by aadyan            #+#    #+#             */
+/*   Updated: 2025/03/20 21:40:48 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "checker.h"
 
-char	*ft_strrchr(const char *s, int c)
+int	ft_lstsize(t_stack *lst)
 {
-	int			i;
+	int	size;
 
-	i = ft_strlen(s);
-	while (i >= 0)
+	size = 0;
+	while (lst)
 	{
-		if (s[i] == (char)c)
-			return ((char *)s + i);
-		--i;
+		++size;
+		lst = lst->next;
 	}
-	if (c == '\0')
-		return ((char *)s + i);
-	return (NULL);
+	return (size);
 }

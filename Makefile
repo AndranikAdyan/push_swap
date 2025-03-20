@@ -1,54 +1,89 @@
-NAME 			= push_swap
+NAME		=	push_swap
 
-BONUS			= checker
+BONUS_NAME	=	checker
 
-BUILD			= ./build
+CC			=	cc
 
-SRC				= ./src
+FLAGS		=	-Wall -Wextra -Werror
 
-SRCS 			= $(shell find $(SRC) -name '*.c')
+LIBFT_DIR	=	libft
+LIBFT		=	-Llibft -lft
 
-OBJS 			= $(patsubst $(SRC)/%.c, $(BUILD)/%.o, $(SRCS))
+INCLUDES	=	-I./includes -I./libft
 
-INCS			= -I./includes -I./Libft
+HEADER		=	./includes/push_swap.h
 
-INCS_B			= -I./bonus_includes -I./Libft
+BONUS_HEADER	=	./includes/checker.h
 
-HEADER			= ./includes/push_swap.h
+SRC_DIR		=	./src
 
-FLAGS			= -Wall -Wextra -Werror -fsanitize=address -g
+BONUS_DIR	=	./bonus
 
-LIBFT			= -LLibft -lft
+SRCS		=	$(SRC_DIR)/main.c \
+				$(SRC_DIR)/parse_functions.c \
+				$(SRC_DIR)/ft_lstsize.c \
+				$(SRC_DIR)/ft_reverse_rotate.c \
+				$(SRC_DIR)/ft_lstadds.c \
+				$(SRC_DIR)/sorting.c \
+				$(SRC_DIR)/butterfly.c \
+				$(SRC_DIR)/ft_free_split.c \
+				$(SRC_DIR)/ft_swap.c \
+				$(SRC_DIR)/ft_atol.c \
+				$(SRC_DIR)/math.c \
+				$(SRC_DIR)/stack.c \
+				$(SRC_DIR)/sort_stack.c \
+				$(SRC_DIR)/ft_rotate.c \
+				$(SRC_DIR)/ft_push.c
 
-CC				= cc
+BONUS_SRCS	=	$(BONUS_DIR)/parse_functions_bonus.c \
+				$(BONUS_DIR)/main_bonus.c \
+				$(BONUS_DIR)/ft_lstsize_bonus.c \
+				$(BONUS_DIR)/ft_reverse_rotate_bonus.c \
+				$(BONUS_DIR)/ft_free_split_bonus.c \
+				$(BONUS_DIR)/ft_swap_bonus.c \
+				$(BONUS_DIR)/ft_atol_bonus.c \
+				$(BONUS_DIR)/checker_bonus.c \
+				$(BONUS_DIR)/stack_bonus.c \
+				$(BONUS_DIR)/ft_rotate_bonus.c \
+				$(BONUS_DIR)/ft_lstadds_bonus.c \
+				$(BONUS_DIR)/ft_push_bonus.c
+				
+OBJS		=	$(patsubst $(SRC_DIR)/%.c, $(BUILD)/%.o, $(SRCS))
 
-all:			$(BUILD) lib $(NAME)
+BONUS_OBJS	=	$(patsubst $(BONUS_DIR)/%.c, $(BUILD)/%.o, $(BONUS_SRCS))
 
-$(BUILD)/%.o:	$(SRC)/%.c $(HEADER) Makefile
-		$(CC) $(FLAGS) $(INCS) -c $< -o $@
+BUILD		=	./build
 
-$(BUILD)/%.o:	$(SRC_B)/%.c $(HEADER_BONUS) Makefile
-		$(CC) $(FLAGS) $(INCS_B) -c $< -o $@
+all: build lib $(NAME)
 
-${NAME}:		${OBJS}
-		$(CC) $(FLAGS) $(OBJS) $(INCS) -o ${NAME} $(LIBFT)
+$(BUILD)/%.o: $(SRC_DIR)/%.c Makefile $(HEADER)
+	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
 
-$(BUILD):
-		@mkdir -p $(BUILD)
+$(BUILD)/%.o: $(BONUS_DIR)/%.c Makefile $(BONUS_HEADER)
+	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
+
+$(NAME): $(OBJS)
+	$(CC) $(FLAGS) $(INCLUDES) $(OBJS) -o $(NAME) $(LIBFT)
+
+$(BONUS_NAME): $(BONUS_OBJS)
+	$(CC) $(FLAGS) $(INCLUDES) $(BONUS_OBJS) -o $(BONUS_NAME) $(LIBFT)
+
+build:
+	mkdir -p $(BUILD)
 
 lib:
-		@make -C Libft
+	make -C $(LIBFT_DIR)
 
 clean:
-		rm -rf $(BUILD)
-		@make clean -C Libft
+	rm -rf $(BUILD)
+	make -C $(LIBFT_DIR) clean
 
-fclean:		clean
-		rm -f ${NAME} ${BONUS}
-		@make fclean -C Libft
+fclean: clean
+	rm -f $(NAME) $(BONUS_NAME)
+	make -C $(LIBFT_DIR) fclean
 
-re:			fclean all
+bonus: build lib $(BONUS_NAME)
 
-bonus:		$(BUILD) lib $(BONUS)
+re: fclean all
 
-.PHONY:		all clean fclean re bonus
+.PHONY: all clean fclean re bonus lib build

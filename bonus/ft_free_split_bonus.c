@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_free_split.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/08 23:49:23 by aadyan            #+#    #+#             */
-/*   Updated: 2024/10/09 16:40:30 by aadyan           ###   ########.fr       */
+/*   Created: 2024/02/09 17:23:02 by andranik          #+#    #+#             */
+/*   Updated: 2025/03/20 21:40:42 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "checker.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+void	free_split(char **arr)
 {
-	size_t				i;
-	const unsigned char	*p1;
-	const unsigned char	*p2;
+	int		i;
 
-	p1 = s1;
-	p2 = s2;
 	i = 0;
-	while (i < n)
-	{
-		if (*(p1 + i) != *(p2 + i))
-			return (*(p1 + i) - *(p2 + i));
-		++i;
-	}
-	return (0);
+	while (arr[i])
+		free(arr[i++]);
+	free(arr);
+	arr = NULL;
 }

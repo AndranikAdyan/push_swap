@@ -1,34 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_lstadds_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/24 16:41:38 by aadyan            #+#    #+#             */
-/*   Updated: 2024/08/28 15:20:45 by aadyan           ###   ########.fr       */
+/*   Created: 2025/03/19 19:29:01 by aadyan            #+#    #+#             */
+/*   Updated: 2025/03/21 00:49:46 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "checker.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+void	ft_lstadd_front(t_stack **lst, t_stack *new)
 {
-	size_t	i;
-	size_t	n;
-
-	i = 0;
-	if (size > 0)
+	if (new)
 	{
-		while (i < size - 1 && src[i])
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
+		new->next = *lst;
+		*lst = new;
 	}
-	n = 0;
-	while (src[n])
-		n++;
-	return (n);
+	return ;
+}
+
+t_stack	*ft_lstlast(t_stack *lst)
+{
+	if (!lst)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
+}
+
+void	ft_lstadd_back(t_stack **lst, t_stack *new)
+{
+	t_stack	*tmp;
+
+	if (lst)
+	{
+		if (!*lst)
+			*lst = new;
+		else
+		{
+			tmp = ft_lstlast(*lst);
+			tmp->next = new;
+		}
+	}
 }

@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/01 20:32:01 by aadyan            #+#    #+#             */
-/*   Updated: 2024/08/01 20:36:38 by aadyan           ###   ########.fr       */
+/*   Created: 2024/02/09 17:21:37 by andranik          #+#    #+#             */
+/*   Updated: 2025/03/20 21:40:40 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "checker.h"
 
-int	ft_isalnum(int ch)
+long int	ft_atol(char *num)
 {
-	if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') \
-			|| (ch >= '0' && ch <= '9'))
-		return (1);
-	return (0);
+	long int	res;
+	int			i;
+
+	res = 0;
+	i = 0;
+	while (num[i])
+		res = res * 10 + num[i++] - '0';
+	return (res);
 }
