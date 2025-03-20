@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 17:04:05 by andranik          #+#    #+#             */
-/*   Updated: 2025/03/19 19:30:09 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/03/20 21:58:49 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ typedef struct s_stack
 void		push(t_stack **stack, int data);
 void		pop(t_stack **stack);
 void		free_stack(t_stack **stack);
-void		print_stacks(t_stack *a, t_stack *b);
 int			pushing_elemenst(t_stack **a, char **av, int ac);
 
 void		swap_data(t_data *data1, t_data *data2);
@@ -57,7 +56,6 @@ int			check_all(char **av, int ac);
 int			find_dublicates(t_stack *a, int data);
 
 int			ft_lstsize(t_stack *lst);
-void		ft_lstadd_front(t_stack **lst, t_stack *new);
 t_stack		*ft_lstlast(t_stack *lst);
 
 int			is_sorted(t_stack *a);
@@ -67,5 +65,8 @@ void		sort_3(t_stack *stack);
 void		sort_under_12(t_stack *a, t_stack *b);
 void		move_node_to_up_for_a(t_stack **stack, size_t index);
 void		sort_stack(t_stack **a, t_stack **b);
+
+void		ft_lstadd_front(t_stack **lst, t_stack *new);
+void		ft_lstadd_back(t_stack **lst, t_stack *new);
 
 #endif

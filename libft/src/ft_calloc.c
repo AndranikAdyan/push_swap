@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/09 17:21:37 by andranik          #+#    #+#             */
-/*   Updated: 2025/03/20 20:07:54 by aadyan           ###   ########.fr       */
+/*   Created: 2024/10/06 20:09:27 by aadyan            #+#    #+#             */
+/*   Updated: 2024/10/21 20:00:23 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-long int	ft_atol(char *num)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	long int	res;
-	int			i;
+	void			*arr;
+	unsigned char	*p;
+	size_t			i;
 
-	res = 0;
+	arr = (void *)malloc(nmemb * size);
+	if (!arr)
+		return (NULL);
+	p = arr;
 	i = 0;
-	while (num[i])
-		res = res * 10 + num[i++] - '0';
-	return (res);
+	while (i < size * nmemb)
+	{
+		p[i] = 0;
+		++i;
+	}
+	return (arr);
 }

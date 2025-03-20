@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/09 17:21:37 by andranik          #+#    #+#             */
-/*   Updated: 2025/03/20 20:07:54 by aadyan           ###   ########.fr       */
+/*   Created: 2024/08/01 20:57:42 by aadyan            #+#    #+#             */
+/*   Updated: 2024/10/17 23:07:47 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-long int	ft_atol(char *num)
+void	*ft_memset(void *ptr, int value, size_t num)
 {
-	long int	res;
-	int			i;
+	size_t			i;
+	unsigned char	*p;
 
-	res = 0;
+	p = ptr;
 	i = 0;
-	while (num[i])
-		res = res * 10 + num[i++] - '0';
-	return (res);
+	while (i < num)
+	{
+		p[i++] = value;
+	}
+	return (ptr);
 }

@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/09 17:21:37 by andranik          #+#    #+#             */
-/*   Updated: 2025/03/20 20:07:54 by aadyan           ###   ########.fr       */
+/*   Created: 2024/08/01 20:50:24 by aadyan            #+#    #+#             */
+/*   Updated: 2025/01/17 23:35:16 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-long int	ft_atol(char *num)
+int	ft_strlen(const char *str)
 {
-	long int	res;
-	int			i;
+	int	i;
 
-	res = 0;
+	if (!str)
+		return (0);
 	i = 0;
-	while (num[i])
-		res = res * 10 + num[i++] - '0';
-	return (res);
+	while (str[i])
+		++i;
+	return (i);
 }

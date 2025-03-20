@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/09 17:21:37 by andranik          #+#    #+#             */
-/*   Updated: 2025/03/20 20:07:54 by aadyan           ###   ########.fr       */
+/*   Created: 2025/03/20 20:11:05 by aadyan            #+#    #+#             */
+/*   Updated: 2025/03/20 20:11:06 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-long int	ft_atol(char *num)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	long int	res;
-	int			i;
+	char	*str;
+	int		i;
+	int		index;
 
-	res = 0;
-	i = 0;
-	while (num[i])
-		res = res * 10 + num[i++] - '0';
-	return (res);
+	if (!s1 || !s2)
+		return (NULL);
+	str = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (!str)
+		return (NULL);
+	i = -1;
+	index = -1;
+	while (s1[++i])
+		str[++index] = s1[i];
+	i = -1;
+	while (s2[++i])
+		str[++index] = s2[i];
+	str[++index] = '\0';
+	return (str);
 }

@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/09 17:21:37 by andranik          #+#    #+#             */
-/*   Updated: 2025/03/20 20:07:54 by aadyan           ###   ########.fr       */
+/*   Created: 2024/08/28 23:49:39 by aadyan            #+#    #+#             */
+/*   Updated: 2025/01/17 23:19:46 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-long int	ft_atol(char *num)
+char	*ft_strchr(char *str, char sign)
 {
-	long int	res;
-	int			i;
-
-	res = 0;
-	i = 0;
-	while (num[i])
-		res = res * 10 + num[i++] - '0';
-	return (res);
+	if (!str)
+		return (NULL);
+	while (*str)
+	{
+		if (*str == sign)
+			return (str);
+		str++;
+	}
+	return (NULL);
 }

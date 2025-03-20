@@ -1,25 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/09 17:21:37 by andranik          #+#    #+#             */
-/*   Updated: 2025/03/20 20:07:54 by aadyan           ###   ########.fr       */
+/*   Created: 2024/10/02 20:56:27 by aadyan            #+#    #+#             */
+/*   Updated: 2025/01/12 01:39:36 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-long int	ft_atol(char *num)
+char	*ft_strnstr(const char *str, const char *to_find, size_t n)
 {
-	long int	res;
-	int			i;
+	size_t	i;
+	int		k;
+	int		size;
 
-	res = 0;
+	if (!*to_find)
+		return ((char *)str);
+	if (n == 0)
+		return (NULL);
+	size = ft_strlen(to_find);
 	i = 0;
-	while (num[i])
-		res = res * 10 + num[i++] - '0';
-	return (res);
+	while (str[i] && i < n)
+	{
+		k = 0;
+		while (str[i + k] && to_find[k] && \
+			str[i + k] == to_find[k] && i + k < n)
+		{
+			k++;
+		}
+		if (k == size)
+			return ((char *)str + i);
+		++i;
+	}
+	return (0);
 }

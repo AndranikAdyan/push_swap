@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/09 17:21:37 by andranik          #+#    #+#             */
-/*   Updated: 2025/03/20 20:07:54 by aadyan           ###   ########.fr       */
+/*   Created: 2024/10/06 20:12:23 by aadyan            #+#    #+#             */
+/*   Updated: 2024/10/06 23:40:21 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-long int	ft_atol(char *num)
+char	*ft_strdup(char *src)
 {
-	long int	res;
-	int			i;
+	char	*s;
+	int		i;
 
-	res = 0;
+	s = (char *)malloc((ft_strlen(src) + 1) * sizeof(char));
+	if (!s)
+		return (NULL);
 	i = 0;
-	while (num[i])
-		res = res * 10 + num[i++] - '0';
-	return (res);
+	while (src[i])
+	{
+		s[i] = src[i];
+		++i;
+	}
+	s[i] = 0;
+	return (s);
 }

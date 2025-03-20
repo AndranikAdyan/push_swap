@@ -1,10 +1,9 @@
-# Executables
 *.exe
 *.out
 *.o
+*.a
 .vscode
 ./build
 .DS_Store
 push_swap
 checker
-.vscode

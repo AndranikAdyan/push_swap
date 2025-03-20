@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 17:13:45 by andranik          #+#    #+#             */
-/*   Updated: 2025/03/19 19:31:19 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/03/21 00:05:15 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,6 @@ void	push_from_stack(t_stack **stack, int num, int index)
 	{
 		new_node->next = NULL;
 		*stack = new_node;
-	}
-}
-
-void	ft_lstadd_back(t_stack **lst, t_stack *new)
-{
-	t_stack	*tmp;
-
-	if (lst)
-	{
-		if (!*lst)
-			*lst = new;
-		else
-		{
-			tmp = ft_lstlast(*lst);
-			tmp->next = new;
-		}
 	}
 }
 

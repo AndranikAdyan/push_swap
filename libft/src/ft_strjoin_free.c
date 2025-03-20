@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   ft_strjoin_free.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/09 17:21:37 by andranik          #+#    #+#             */
-/*   Updated: 2025/03/20 20:07:54 by aadyan           ###   ########.fr       */
+/*   Created: 2024/10/10 09:59:45 by aadyan            #+#    #+#             */
+/*   Updated: 2025/03/20 20:10:48 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-long int	ft_atol(char *num)
+char	*ft_strjoin_free(char *str1, char *str2)
 {
-	long int	res;
-	int			i;
+	int		i;
+	int		j;
+	char	*str;
 
-	res = 0;
+	str = malloc(sizeof(char) * (ft_strlen(str1) + ft_strlen(str2) + 1));
+	if (!str)
+		return (NULL);
 	i = 0;
-	while (num[i])
-		res = res * 10 + num[i++] - '0';
-	return (res);
+	j = 0;
+	while (str1 && str1[i])
+		str[j++] = str1[i++];
+	i = 0;
+	while (str2 && str2[i])
+		str[j++] = str2[i++];
+	str[j] = '\0';
+	if (str1)
+		free(str1);
+	return (str);
 }

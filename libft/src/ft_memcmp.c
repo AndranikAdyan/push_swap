@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/19 19:29:01 by aadyan            #+#    #+#             */
-/*   Updated: 2025/03/19 19:30:32 by aadyan           ###   ########.fr       */
+/*   Created: 2024/10/08 23:49:23 by aadyan            #+#    #+#             */
+/*   Updated: 2024/10/09 16:40:30 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	ft_lstadd_front(t_stack **lst, t_stack *new)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	if (new)
+	size_t				i;
+	const unsigned char	*p1;
+	const unsigned char	*p2;
+
+	p1 = s1;
+	p2 = s2;
+	i = 0;
+	while (i < n)
 	{
-		new->next = *lst;
-		*lst = new;
+		if (*(p1 + i) != *(p2 + i))
+			return (*(p1 + i) - *(p2 + i));
+		++i;
 	}
-	return ;
-}
-
-t_stack	*ft_lstlast(t_stack *lst)
-{
-	if (!lst)
-		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
+	return (0);
 }

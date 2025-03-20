@@ -6,11 +6,11 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 17:23:02 by andranik          #+#    #+#             */
-/*   Updated: 2025/03/19 19:25:58 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/03/20 20:07:54 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
+#include "push_swap.h"
 
 void	free_split(char **arr)
 {
