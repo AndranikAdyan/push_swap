@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 11:42:28 by andranik          #+#    #+#             */
-/*   Updated: 2025/03/21 01:05:27 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/03/21 18:46:56 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,19 +53,23 @@ static int	check_symbols(char **av, int ac)
 {
 	int	i;
 	int	j;
+	int	digit_present;
 
 	i = 1;
 	while (i < ac)
 	{
-		if (av[i][0] == '\0')
-			return (0);
+		digit_present = 0;
 		j = 0;
 		while (av[i][j])
 		{
+			if (ft_isdigit(av[i][j]))
+				digit_present = 1;
 			if (!check_sign(av[i], j))
 				return (0);
 			j++;
 		}
+		if (!digit_present)
+			return (0);
 		i++;
 	}
 	return (1);
