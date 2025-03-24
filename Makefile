@@ -1,3 +1,5 @@
+MAKEFLAGS += --no-print-directory
+
 NAME		=	push_swap
 
 BONUS_NAME	=	checker
@@ -54,33 +56,45 @@ BONUS_OBJS	=	$(patsubst $(BONUS_DIR)/%.c, $(BUILD)/%.o, $(BONUS_SRCS))
 
 BUILD		=	./build
 
+GREEN		= \033[0;32m
+B_GREEN   := \033[1;32m
+RED			= \033[0;31m
+B_YELLOW	= \033[1;33m
+RESET		= \033[0m
+
+
 all: build lib $(NAME)
 
 $(BUILD)/%.o: $(SRC_DIR)/%.c Makefile $(HEADER)
-	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
+	@echo "$(GREEN) Compiling $< $(RESET)"
+	@$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
 
 $(BUILD)/%.o: $(BONUS_DIR)/%.c Makefile $(BONUS_HEADER)
-	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
+	@echo "$(GREEN) Compiling $< $(RESET)"
+	@$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
 
 $(NAME): $(OBJS)
-	$(CC) $(FLAGS) $(INCLUDES) $(OBJS) -o $(NAME) $(LIBFT)
+	@echo "$(B_GREEN) Push_Swap Done! $(RESET)"
+	@$(CC) $(FLAGS) $(INCLUDES) $(OBJS) -o $(NAME) $(LIBFT)
 
 $(BONUS_NAME): $(BONUS_OBJS)
 	$(CC) $(FLAGS) $(INCLUDES) $(BONUS_OBJS) -o $(BONUS_NAME) $(LIBFT)
 
 build:
-	mkdir -p $(BUILD)
+	@mkdir -p $(BUILD)
 
 lib:
-	make -C $(LIBFT_DIR)
+	@make -C $(LIBFT_DIR)
 
 clean:
-	rm -rf $(BUILD)
-	make -C $(LIBFT_DIR) clean
+	@echo "$(RED) Removing Push_Swap Objects $(RESET)"
+	@rm -rf $(BUILD)
+	@make -C $(LIBFT_DIR) clean
 
 fclean: clean
-	rm -f $(NAME) $(BONUS_NAME)
-	make -C $(LIBFT_DIR) fclean
+	@echo "$(RED) Removing Push_Swap Executable $(RESET)"
+	@rm -f $(NAME) $(BONUS_NAME)
+	@make -C $(LIBFT_DIR) fclean
 
 bonus: build lib $(BONUS_NAME)
 

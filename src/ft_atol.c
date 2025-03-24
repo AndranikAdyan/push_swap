@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 19:44:02 by aadyan            #+#    #+#             */
-/*   Updated: 2025/03/24 19:44:03 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/03/24 20:08:38 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,19 @@
 long int	ft_atol(char *num)
 {
 	long int	res;
+	int			sign;
 	int			i;
 
+	sign = 1;
 	res = 0;
 	i = 0;
+	if (num[i] == '-' || num[i] == '+')
+		if (num[i++] == '-')
+			sign = -1;
+	while (num[i] == '0')
+		i++;
 	while (num[i])
-		res = res * 10 + num[i++] - '0';
-	return (res);
+		res = (res + num[i++] - '0') * 10;
+
+	return (sign * res / 10);
 }

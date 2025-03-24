@@ -1,3 +1,5 @@
+MAKEFLAGS += --no-print-directory
+
 NAME		=	libft.a
 BUILD		=	./build
 SRCS_DIR	=	./src
@@ -38,28 +40,35 @@ SRCS		=	./src/ft_isalpha.c \
 
 OBJS		=	$(patsubst $(SRCS_DIR)/%.c, $(BUILD)/%.o, $(SRCS))
 HEADER		=	libft.h
-RM			=	rm -f
 AR			=	ar rcs
 CC			=	cc
 FLAGS		=	-Wall -Wextra -Werror
 
+RED			= \033[0;31m
+YELLOW		= \033[0;33m
+B_YELLOW	= \033[1;33m
+RESET		= \033[0m
+
 all:			$(BUILD) $(NAME)
 
 $(BUILD)/%.o:	$(SRCS_DIR)/%.c $(HEADER) Makefile
+		@echo "$(YELLOW) Compiling $< $(RESET)"
 		@$(CC) $(FLAGS) -I. -c $< -o $@
 
 $(NAME):		$(OBJS)
+		@echo "$(B_YELLOW) Libft Done! $(RESET)"
 		@$(AR) $(NAME) $(OBJS)
 
 $(BUILD):
 		@mkdir -p $(BUILD)
 
 clean:
-		@rm -rf $(BUILD)
+	@echo "$(RED) Removing Libft Objects $(RESET)"
+	@rm -rf $(BUILD)
 
 fclean:
-		@rm -rf $(BUILD)
-		@$(RM) $(NAME)
+	@echo "$(RED) Removing Libft Archive $(RESET)"
+	@rm -f $(NAME)
 
 re:				fclean all
 
