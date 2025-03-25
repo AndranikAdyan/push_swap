@@ -6,7 +6,7 @@
 /*   By: aadyan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:51:55 by aadyan            #+#    #+#             */
-/*   Updated: 2025/03/21 00:58:02 by aadyan           ###   ########.fr       */
+/*   Updated: 2025/03/25 16:47:06 by aadyan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,7 @@ int	do_op(t_stack **a, t_stack **b, char *op)
 void	checker(t_stack **a, t_stack **b)
 {
 	char	*op;
-	int		i;
 
-	i = 0;
 	while (1)
 	{
 		op = get_next_line(0);
@@ -56,6 +54,5 @@ void	checker(t_stack **a, t_stack **b)
 			exit (1);
 		}
 		free(op);
-		++i;
 	}
 }
