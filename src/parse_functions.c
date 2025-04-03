@@ -27,7 +27,6 @@ static int	int_range(char *str)
 		if (len > 11)
 			return (0);
 	}
-	printf("num -> %ld\n", ft_atol(str));
 	if (ft_atol(str) >= INT_MIN && ft_atol(str) <= INT_MAX)
 		return (1);
 	return (0);
